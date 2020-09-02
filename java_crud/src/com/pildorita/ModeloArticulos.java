@@ -57,7 +57,7 @@ while (miresulset.next()) {
 return articulos; 		
 	}
 
-	public void AgregarelnuevoArticulo(String nuevoarticulo) {
+	public void AgregarelnuevoArticulo(Articulos nuevoarticulo) {
 		// TODO Auto-generated method stub
 		//obtener la conexion
 		
@@ -74,13 +74,12 @@ return articulos;
 			mistatement=miconexion.prepareStatement(sql);
 			//establecer los parametros para elarticulo
 
-			mistatement.setString(1, nuevoarticulo.);r
-			mistatement.setInt(1,nuevoarticulo.getnid());
-			mistatement.setString(2,nuevoarticulo.getncodigo());
-			mistatement.setString(3,nuevoarticulo.getnombre());
-			mistatement.setString(4,nuevoarticulo.getdescripcion());
-			mistatement.setDouble(5,nuevoarticulo.getnexistencia());
-			mistatement.setDouble(6,nuevoarticulo.getnprecio());
+			mistatement.setInt(1, nuevoarticulo.getNid());
+			mistatement.setString(2,nuevoarticulo.getNcodigoString());
+			mistatement.setString(3,nuevoarticulo.getNnombre());
+			mistatement.setString(4,nuevoarticulo.getNdescripcion());
+			mistatement.setDouble(5,nuevoarticulo.getNexistencia());
+			mistatement.setDouble(6,nuevoarticulo.getNprecio());
 			
 			//ejecutar la instruccion sql
 			
