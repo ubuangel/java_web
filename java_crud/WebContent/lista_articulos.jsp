@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <%@ page import=" java.util.*, com.pildorita. *" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
      
 <!DOCTYPE html>
 <html>
@@ -19,14 +19,8 @@ border-bottom:solid #F00 2px;
 </style>
 
 </head>
-<%
-
-//obtinee los productos de lcontrolador
-List<Articulos> losarticulos = (List<Articulos>) request.getAttribute("listaarticulos");//ya tenfo almacenada la lista que viene del controlador a la lista losarticulos
 
 
-
-%>
 <body>
 
 
@@ -44,20 +38,21 @@ List<Articulos> losarticulos = (List<Articulos>) request.getAttribute("listaarti
 
 </tr>
 
-<% for (Articulos temparticulo:losarticulos){ %>
+<c:forEach  var="tempar" items="${listaarticulos}">
 
 <tr>
-<td> <%= temparticulo.getNcodigoString() %></td>
-<td><%=temparticulo.getNdescripcion() %></td>
-<td><%=temparticulo.getNexistencia() %></td>
-<td><%=temparticulo.getNid() %></td>
-<td><%=temparticulo.getNnombre() %></td>
-<td><%=temparticulo.getNprecio() %></td>
+<td>${tempar.nid} </td>
+<td> ${tempar.ncodigoString} </td>
+<td>${tempar.nnombre} </td>
+<td>${tempar.ndescripcion} </td>
+<td>${tempar.nexistencia} </td>
+<td>${tempar.nprecio} </td>
+
 
 
 </tr>
-
-	<% } %>
+</c:forEach>
+	
 
 </table>
 
