@@ -1,6 +1,8 @@
 package com.pildorita;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -61,22 +63,22 @@ public void init() throws ServletException {
 		//leer el parametro del formulario
 		String elComando=request.getParameter("instruccion");
 		
-		if (elCommando==null) {
-			elCommando="listar";
-			
-		}
+		
 		//si no se envia el parametro ,listar
 		
-		
+		if (elComando==null) {
+			elComando="listar";
+			
+		}
 		
 		//redirigir el flujo de ejecucuion al metodo adecuado
 		
 		switch (elComando) {
-		case listar:
+		case "listar":
 			
 			obtenerArticulos(request,response);
 			break;
-		case insertarBBDD:
+		case "insertarBBDD":
 			insertarArticulos(request,response);
 			
 			break;
@@ -85,14 +87,6 @@ public void init() throws ServletException {
 			
 			break;
 		}
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		
@@ -107,24 +101,37 @@ public void init() throws ServletException {
 		
 		String Codcodigo=request.getParameter("codigo");
 		String Codnombre=request.getParameter("nombre");
-		String Codid=request.getParameter("id");
+		int Codid= Integer.parseInt( request.getParameter("id"));
+		
+		//
+		
+		
+		//SimpleDateFormat formatoFecha=new SimpleDateFormat("yyyy-MM-dd");
+			//Date Fecha=null;
+		/*	
+			try {
+				
+				Fecha =(Date) formatoFecha.parse(request.getParameter("fecha"));
+			} catch (Exception e) {
+				e.printStackTrace();
+				// TODO: handle exception
+			}
+		
+		*/
+		
 		String Coddescripcion=request.getParameter("descripcion");
-		String Codexistencia=request.getParameter("existencia");
-		String Codprecio=request.getParameter("precio");
+		Double Codexistencia=Double.parseDouble(request.getParameter("existencia"));
+		Double Codprecio=Double.parseDouble( request.getParameter("precio"));
 		//crear un objeto de tipo producto
 		
+		Articulos nuevoarticulo=new Articulos( Codid, Codnombre, Coddescripcion, Codcodigo, Codexistencia,Codprecio);
+		
+		//enviar el objeto al modelo y despues insertar el objeto producto en la base de datos
+		modeloarticulo.AgregarelnuevoProducto("nuevoarticulo"); 
 		
 		
-		//enviar el objeto al modelo
-		
-		
-		
-		//insertar el objeto producto en la base de datos
-		
-		
-		
-		
-		//volver al listado de productos
+		//volver al listado de productos(en mi caso articulo)
+		obtenerArticulos(request,response);
 		
 	}
 
@@ -146,9 +153,7 @@ try {
 
 			request.setAttribute("listaarticulos", articulos);
 			
-			
-			
-			
+	
 			//enviar el request a la pagina jsp
 			RequestDispatcher miDispatcher=request.getRequestDispatcher("/lista_articulos.jsp");
 			

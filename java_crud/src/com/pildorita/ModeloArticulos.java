@@ -55,4 +55,21 @@ while (miresulset.next()) {
 return articulos; 		
 	}
 
+	public void AgregarelnuevoProducto(String string) {
+		// TODO Auto-generated method stub
+		//obtener la conexion
+		
+		
+		//crearinstruccion sql que inserte e larticulo
+		
+		
+		
+		//establecer los parametros para elarticulo
+		
+		
+		
+		//ejecutar la instruccion sql
+		
+	}
+
 }
