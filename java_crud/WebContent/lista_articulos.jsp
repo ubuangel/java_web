@@ -24,6 +24,14 @@ text-align:centeer;
 background-color:#5882FA;
 
 }
+.table{
+float:left;
+}
+#contenedorboton{
+
+margin-left:1000px;
+}
+
 
 </style>
 
@@ -64,6 +72,13 @@ background-color:#5882FA;
 	
 
 </table>
+
+<div id="contenedorboton" >
+
+<input type="button" value="insertar_regsitro" onclick="window.location.href='inserta_arti.jsp'"/>
+
+
+</div>
 
 </body>
 
