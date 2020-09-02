@@ -52,9 +52,6 @@ public void init() throws ServletException {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	
-	
-	
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -127,7 +124,7 @@ public void init() throws ServletException {
 		Articulos nuevoarticulo=new Articulos( Codid, Codnombre, Coddescripcion, Codcodigo, Codexistencia,Codprecio);
 		
 		//enviar el objeto al modelo y despues insertar el objeto producto en la base de datos
-		modeloarticulo.AgregarelnuevoProducto("nuevoarticulo"); 
+		modeloarticulo.AgregarelnuevoArticulo("nuevoarticulo"); 
 		
 		
 		//volver al listado de productos(en mi caso articulo)

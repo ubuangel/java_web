@@ -57,7 +57,7 @@ while (miresulset.next()) {
 return articulos; 		
 	}
 
-	public void AgregarelnuevoProducto(String string) {
+	public void AgregarelnuevoArticulo(String nuevoarticulo) {
 		// TODO Auto-generated method stub
 		//obtener la conexion
 		
@@ -72,6 +72,19 @@ return articulos;
 			
 			String sql="insert into articulos (id,codigo,nombre,descripcioin ,existencia ,precio)"+"VALUES(?,?,?,?,?,?)";
 			mistatement=miconexion.prepareStatement(sql);
+			//establecer los parametros para elarticulo
+
+			mistatement.setString(1, nuevoarticulo.);r
+			mistatement.setInt(1,nuevoarticulo.getnid());
+			mistatement.setString(2,nuevoarticulo.getncodigo());
+			mistatement.setString(3,nuevoarticulo.getnombre());
+			mistatement.setString(4,nuevoarticulo.getdescripcion());
+			mistatement.setDouble(5,nuevoarticulo.getnexistencia());
+			mistatement.setDouble(6,nuevoarticulo.getnprecio());
+			
+			//ejecutar la instruccion sql
+			
+			mistatement.execute();
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -80,11 +93,9 @@ return articulos;
 		
 		
 		
-		//establecer los parametros para elarticulo
 		
 		
 		
-		//ejecutar la instruccion sql
 		
 	}
 
