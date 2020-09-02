@@ -12,9 +12,18 @@
 <style type="text/css">
 
 .cabecera{
-border-bottom:solid #F00 2px;
+font-size:1.2em;
+font-weight:bold;
+color:#FFF;
+background-color:#08088A;
+
 }
 
+.filas{
+text-align:centeer;
+background-color:#5882FA;
+
+}
 
 </style>
 
@@ -41,12 +50,12 @@ border-bottom:solid #F00 2px;
 <c:forEach  var="tempar" items="${listaarticulos}">
 
 <tr>
-<td>${tempar.nid} </td>
-<td> ${tempar.ncodigoString} </td>
-<td>${tempar.nnombre} </td>
-<td>${tempar.ndescripcion} </td>
-<td>${tempar.nexistencia} </td>
-<td>${tempar.nprecio} </td>
+<td class="filas">${tempar.nid} </td>
+<td class="filas"> ${tempar.ncodigoString} </td>
+<td class="filas">${tempar.nnombre} </td>
+<td class="filas">${tempar.ndescripcion} </td>
+<td class="filas">${tempar.nexistencia} </td>
+<td class="filas">${tempar.nprecio} </td>
 
 
 
