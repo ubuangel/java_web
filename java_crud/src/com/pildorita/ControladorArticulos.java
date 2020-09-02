@@ -58,12 +58,85 @@ public void init() throws ServletException {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 
+		//leer el parametro del formulario
+		String elComando=request.getParameter("instruccion");
 		
-//		obtener la lista de articulos del articulo(modelo)
-		List<Articulos>articulos;
-		
-		try {
+		if (elCommando==null) {
+			elCommando="listar";
 			
+		}
+		//si no se envia el parametro ,listar
+		
+		
+		
+		//redirigir el flujo de ejecucuion al metodo adecuado
+		
+		switch (elComando) {
+		case listar:
+			
+			obtenerArticulos(request,response);
+			break;
+		case insertarBBDD:
+			insertarArticulos(request,response);
+			
+			break;
+		default:
+			obtenerArticulos(request,response);
+			
+			break;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+
+	private void insertarArticulos(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
+		//leer la informacion de lproducto que eviene del formulario
+		
+		String Codcodigo=request.getParameter("codigo");
+		String Codnombre=request.getParameter("nombre");
+		String Codid=request.getParameter("id");
+		String Coddescripcion=request.getParameter("descripcion");
+		String Codexistencia=request.getParameter("existencia");
+		String Codprecio=request.getParameter("precio");
+		//crear un objeto de tipo producto
+		
+		
+		
+		//enviar el objeto al modelo
+		
+		
+		
+		//insertar el objeto producto en la base de datos
+		
+		
+		
+		
+		//volver al listado de productos
+		
+	}
+
+
+	private void obtenerArticulos(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
+		
+		List<Articulos>articulos;
+try {
+			
+//		obtener la lista de articulos del articulo(modelo)
 			
 			articulos=modeloarticulo.getArti();
 			
@@ -86,9 +159,6 @@ public void init() throws ServletException {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		
-		
-		
 		
 		
 		
