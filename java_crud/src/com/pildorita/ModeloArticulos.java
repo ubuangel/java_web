@@ -2,7 +2,9 @@ package com.pildorita;
 
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,8 +61,22 @@ return articulos;
 		// TODO Auto-generated method stub
 		//obtener la conexion
 		
+		Connection miconexion=null;
+		PreparedStatement mistatement=null;
 		
-		//crearinstruccion sql que inserte e larticulo
+		try {
+			
+			
+			//crearinstruccion sql que inserte e larticulo
+			miconexion=origendatos.getConnection();
+			
+			String sql="insert into articulos (id,codigo,nombre,descripcioin ,existencia ,precio)"+"VALUES(?,?,?,?,?,?)";
+			mistatement=miconexion.prepareStatement(sql);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 		
 		
 		
