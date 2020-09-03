@@ -1,6 +1,5 @@
 package com.pildorita;
 
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -97,6 +96,67 @@ return articulos;
 		
 		
 		
+	}
+
+	public Articulos getArticulo(String codigoArticulo) {
+		// TODO Auto-generated method stub
+		
+		Articulos elArticulos=null;
+		Connection miConnection=null;
+		
+		PreparedStatement miStatement=null;
+		
+		ResultSet miResultSet=null;
+		
+		String cArticulo=codigoArticulo;
+		
+		try {
+			//establecer la conexion
+			miConnection=origendatos.getConnection();
+			
+			
+			
+//			crear sql que busque el producto
+			
+			
+			String sql="select *from articulo where codigo=?";
+			
+			//crear la consulta preparada
+			miStatement=miConnection.prepareStatement(sql);
+			
+//			estaablecer los parametros
+			miStatement.setString(1,cArticulo);
+			
+			//ejecutar la consulta
+			miResultSet=miStatement.executeQuery();
+			
+			
+			//obtener los datos de respusta 
+			if (miResultSet.next()) {
+				
+				String c_art=miResultSet.getString("codigo");
+				String nnombre=miResultSet.getString("nombre");
+				String ndes=miResultSet.getString("descripcion");
+				
+				double nex=miResultSet.getDouble("existencia");
+				double pre=miResultSet.getDouble("precio");
+				
+				elArticulos=new Articulos(nnombre, ndes, c_art, nex, pre);
+				
+				
+			}else {
+				throw new Exception("no hemos encontrado el producto con codigo articulo= "+ cArticulo);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return elArticulos;
+		
+		
+		
+
 	}
 
 }

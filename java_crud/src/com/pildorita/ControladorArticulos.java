@@ -81,12 +81,44 @@ public void init() throws ServletException {
 			insertarArticulos(request,response);
 			
 			break;
+		case "cargar":
+			try {
+				cargaArticulos(request,response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		default:
 			obtenerArticulos(request,response);
 			
 			
 		}
 		
+		
+		
+		
+	}
+
+
+	private void cargaArticulos(HttpServletRequest request, HttpServletResponse response)throws Exception{
+		// TODO Auto-generated method stub
+		//leer el codigo articulo que viene del listado
+		//comunicar con el modelo para que este haga una conuslta a la bbdd cuyo criterio sera el codigo aarticulo que le enviamos
+		//leer
+		String codigoArticulo=request.getParameter("carticulo");
+		
+		
+//enviar carticulo al modelo	
+//		en definitiva obtenemos aqi el ariculo  que el usuario desea actualisar
+		Articulos elArticulo=modeloarticulo.getArticulo(codigoArticulo);
+		
+		//colocar atributo correspondiente al codigo articulo  
+		request.setAttribute("articulo_actualizado", elArticulo);
+		
+		//enviar todo la informacion del articulo al formulario de actualisar(jsp)
+		RequestDispatcher dispatcher=request.getRequestDispatcher("/actualizarArticulo.jsp");
+		
+		dispatcher.forward(request, response);
 		
 		
 		
