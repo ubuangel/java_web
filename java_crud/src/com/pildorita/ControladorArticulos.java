@@ -17,7 +17,9 @@ import javax.sql.DataSource;
 
 
 /**
+ *
  * Servlet implementation class ControladorArticulos
+ *debe listar la informacion almacenada en la base de datos y de insetar la informacion de del formulario
  */
 @WebServlet("/ControladorArticulos")
 public class ControladorArticulos extends HttpServlet {
@@ -61,7 +63,7 @@ public void init() throws ServletException {
 		String elComando=request.getParameter("instruccion");
 		
 		
-		//si no se envia el parametro ,listar
+		//si no se envia el parametro ,listar articulos
 		
 		if (elComando==null) {
 			elComando="listar";
@@ -82,7 +84,7 @@ public void init() throws ServletException {
 		default:
 			obtenerArticulos(request,response);
 			
-			break;
+			
 		}
 		
 		
@@ -94,7 +96,7 @@ public void init() throws ServletException {
 	private void insertarArticulos(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
-		//leer la informacion de lproducto que eviene del formulario
+		//leer la informacion del articulo que eviene del formulario
 		
 		String Codcodigo=request.getParameter("codigo");
 		String Codnombre=request.getParameter("nombre");
@@ -119,12 +121,13 @@ public void init() throws ServletException {
 		String Coddescripcion=request.getParameter("descripcion");
 		Double Codexistencia=Double.parseDouble(request.getParameter("existencia"));
 		Double Codprecio=Double.parseDouble( request.getParameter("precio"));
+		
 		//crear un objeto de tipo producto
 		
 		Articulos nuevoarticulo=new Articulos( Codid, Codnombre, Coddescripcion, Codcodigo, Codexistencia,Codprecio);
 		
-		//enviar el objeto al modelo y despues insertar el objeto producto en la base de datos
-		modeloarticulo.AgregarelnuevoArticulo("nuevoarticulo"); 
+		//enviar el objeto al modelo y despues insertar el objeto Articulo en la base de datos
+		modeloarticulo.AgregarelnuevoArticulo(nuevoarticulo); 
 		
 		
 		//volver al listado de productos(en mi caso articulo)
