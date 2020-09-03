@@ -119,7 +119,7 @@ return articulos;
 //			crear sql que busque el producto
 			
 			
-			String sql="select *from articulo where codigo=?";
+			String sql="select *from articulos where id=?";
 			
 			//crear la consulta preparada
 			miStatement=miConnection.prepareStatement(sql);
@@ -140,7 +140,7 @@ return articulos;
 				
 				double nex=miResultSet.getDouble("existencia");
 				double pre=miResultSet.getDouble("precio");
-				
+				//el id evidentemente no lo queremos
 				elArticulos=new Articulos(nnombre, ndes, c_art, nex, pre);
 				
 				

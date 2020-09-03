@@ -102,7 +102,7 @@ public void init() throws ServletException {
 
 	private void cargaArticulos(HttpServletRequest request, HttpServletResponse response)throws Exception{
 		// TODO Auto-generated method stub
-		//leer el codigo articulo que viene del listado
+		//leer el codigo articulo que viene del listado de articulos
 		//comunicar con el modelo para que este haga una conuslta a la bbdd cuyo criterio sera el codigo aarticulo que le enviamos
 		//leer
 		String codigoArticulo=request.getParameter("carticulo");

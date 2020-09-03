@@ -10,8 +10,10 @@
 <h1 style="text-align:center ">Actualisar Articulo</h1>
 
 <form name="form1" action="ControladorArticulos" method="get" >
+
 <input type="hidden" name="instruccion" value="actualizarBBDD">
-<input type="hidden" name="idm" value="${articulo_actualizado.nid}">
+
+<input type="hidden" name="id" value="${articulo_actualizado.nid}">
 
 <table width="50%" border="0">
 
