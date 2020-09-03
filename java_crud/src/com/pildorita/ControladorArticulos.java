@@ -131,7 +131,7 @@ public void init() throws ServletException {
 		
 		
 		//volver al listado de productos(en mi caso articulo)
-		obtenerArticulos(request,response);
+		obtenerArticulos(request,response);//mostrar la vista para ver la insercion
 		
 	}
 
@@ -140,10 +140,10 @@ public void init() throws ServletException {
 		// TODO Auto-generated method stub
 		
 		
+//		obtener la lista de articulos del articulo(modelo)
 		List<Articulos>articulos;
 try {
 			
-//		obtener la lista de articulos del articulo(modelo)
 			
 			articulos=modeloarticulo.getArti();
 			

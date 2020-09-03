@@ -59,10 +59,10 @@ return articulos;
 
 	public void AgregarelnuevoArticulo(Articulos nuevoarticulo) {
 		// TODO Auto-generated method stub
-		//obtener la conexion
 		
 		Connection miconexion=null;
 		PreparedStatement mistatement=null;
+		//obtener la conexion
 		
 		try {
 			
@@ -70,10 +70,11 @@ return articulos;
 			//crearinstruccion sql que inserte e larticulo
 			miconexion=origendatos.getConnection();
 			
-			String sql="insert into articulos (id,codigo,nombre,descripcioin ,existencia ,precio)"+"VALUES(?,?,?,?,?,?)";
+			String sql="insert into articulos (id,codigo,nombre,descripcion ,existencia ,precio)"+
+			"VALUES(?,?,?,?,?,?)";
 			mistatement=miconexion.prepareStatement(sql);
 			//establecer los parametros para elarticulo
-
+//el primer parametro es a que ase referenci a(indice del  parametro) y el segundo es el valor
 			mistatement.setInt(1, nuevoarticulo.getNid());
 			mistatement.setString(2,nuevoarticulo.getNcodigoString());
 			mistatement.setString(3,nuevoarticulo.getNnombre());

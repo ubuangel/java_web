@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>insertar un titulo aqui</title>
 </head>
 <body>
 <h1 style="text-align:center ">Insertar Registro</h1>
