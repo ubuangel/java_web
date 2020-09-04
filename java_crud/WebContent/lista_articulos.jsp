@@ -84,6 +84,24 @@ margin-left:1000px;
 
 </c:url>
 
+<!-- link para eliminar los registros -->
+
+<c:url var="linktempE" value="ControladorArticulos" > 
+
+
+<c:param name="instruccion" value="eliminar"></c:param> 
+
+
+<c:param name="carticulo" value="${tempar.nid}"></c:param>
+ 
+
+</c:url>
+
+
+
+
+
+
 <tr>
 <td class="filas">${tempar.nid} </td>
 <td class="filas">${tempar.ncodigoString} </td>
@@ -91,7 +109,7 @@ margin-left:1000px;
 <td class="filas">${tempar.ndescripcion} </td>
 <td class="filas">${tempar.nexistencia} </td>
 <td class="filas">${tempar.nprecio} </td>
-<td class="filas"><a href="${linktemp}">actualizar</a> </td>
+<td class="filas"><a href="${linktemp}">actualizar</a>  &nbsp;<a href="${linktempE}">eliminar</a> </td>
 
 
 

@@ -99,6 +99,15 @@ public void init() throws ServletException {
 			}
 			
 			break ;
+			
+		case "eliminar":
+			try {
+				eliminarAr(request,response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
 		default:
 			obtenerArticulos(request,response);
 			
@@ -108,6 +117,24 @@ public void init() throws ServletException {
 		
 		
 		
+	}
+//si lansa una excepscion en la llamada ,rodeaer  con try cah pracontrolar ese eexcepcion si ecurre erro no ayuda edintficar el error
+
+	private void eliminarAr(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
+		// TODO Auto-generated method stub
+//		capturar el codigo artoculo(id)
+		
+		String Codcodigo=request.getParameter("carticulo");
+		
+//		borrar articulo ede la bbdd
+		
+		modeloarticulo.eliminararticulo(Codcodigo);
+		
+		
+		
+//		volver al listado de articulos
+		obtenerArticulos(request,response);
 	}
 
 
@@ -204,7 +231,12 @@ public void init() throws ServletException {
 		Articulos nuevoarticulo=new Articulos( Codid, Codnombre, Coddescripcion, Codcodigo, Codexistencia,Codprecio);
 		
 		//enviar el objeto al modelo y despues insertar el objeto Articulo en la base de datos
-		modeloarticulo.AgregarelnuevoArticulo(nuevoarticulo); 
+		try {
+			modeloarticulo.AgregarelnuevoArticulo(nuevoarticulo);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		
 		
 		//volver al listado de productos(en mi caso articulo)

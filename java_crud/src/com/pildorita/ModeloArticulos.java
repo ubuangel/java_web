@@ -56,7 +56,7 @@ while (miresulset.next()) {
 return articulos; 		
 	}
 
-	public void AgregarelnuevoArticulo(Articulos nuevoarticulo) {
+	public void AgregarelnuevoArticulo(Articulos nuevoarticulo)throws Exception {
 		// TODO Auto-generated method stub
 		
 		Connection miconexion=null;
@@ -88,6 +88,12 @@ return articulos;
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+		}finally {
+				mistatement.close();
+				miconexion.close();
+				
+			
+			
 		}
 		
 		
@@ -166,7 +172,7 @@ return articulos;
 //		crear una consulta preparada
 		PreparedStatement miStatement=null;
 		
-		
+		try {
 //		String AArticulo=articuloActualizado;
 		
 		
@@ -196,10 +202,58 @@ return articulos;
 			//ejecutar la instruccion     sql
 			miStatement.execute();
 			
-			
+		}	
+			finally {
+				miStatement.close();
+				miConnection.close();
+				
+			} 
 			
 				
 		
+		
+		
+	}
+
+	public void eliminararticulo(String codcodigo) throws Exception{
+		
+		// TODO Auto-generated method stub
+		Connection miConnection=null;
+		PreparedStatement miStatement=null;
+		try {
+			
+			//		establecer laconexion bbdd}
+
+		miConnection=origendatos.getConnection();
+
+		//crear la sql de eliminacion
+		String sql="delete from articulos where id=?";
+		
+		
+		
+		//preparar la consulta
+		miStatement=miConnection.prepareStatement(sql);
+
+		
+		
+		//establecer los parametros de consulta
+		miStatement.setString(1,codcodigo);
+
+		
+		
+	
+//		ejecutarla sentecncia sql
+		
+		miStatement.execute();
+		
+			
+		} finally {
+			miStatement.close();
+			miConnection.close();
+			
+		} 
+		
+
 		
 		
 	}
