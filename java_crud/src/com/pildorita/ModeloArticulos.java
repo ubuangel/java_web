@@ -133,7 +133,7 @@ return articulos;
 			
 			//obtener los datos de respusta 
 			if (miResultSet.next()) {
-				
+				int ind=miResultSet.getInt("id");
 				String c_art=miResultSet.getString("codigo");
 				String nnombre=miResultSet.getString("nombre");
 				String ndes=miResultSet.getString("descripcion");
@@ -141,7 +141,7 @@ return articulos;
 				double nex=miResultSet.getDouble("existencia");
 				double pre=miResultSet.getDouble("precio");
 				//el id evidentemente no lo queremos
-				elArticulos=new Articulos(nnombre, ndes, c_art, nex, pre);
+				elArticulos=new Articulos(ind,nnombre, ndes, c_art, nex, pre);
 				
 				
 			}else {
@@ -157,6 +157,51 @@ return articulos;
 		
 		
 
+	}
+
+	public void ActualizarProducto(Articulos articuloActualizado)throws Exception {
+		// TODO Auto-generated method stub
+		
+		Connection miConnection=null;
+//		crear una consulta preparada
+		PreparedStatement miStatement=null;
+		
+		
+//		String AArticulo=articuloActualizado;
+		
+		
+			//establecer la conexion
+			miConnection=origendatos.getConnection();
+			
+			
+			
+//			crear sql que busque el producto
+			
+			
+			String sql="update articulos set codigo=?,nombre=?,descripcion=?,existencia=?,precio=? where id=?";
+			
+			//crear la consulta preparada
+			miStatement=miConnection.prepareStatement(sql);
+			
+//			obtener la seccion de articulo que le 
+			miStatement.setString(1,articuloActualizado.getNcodigoString());
+			miStatement.setString(3,articuloActualizado.getNnombre());
+			miStatement.setString(2,articuloActualizado.getNdescripcion());
+			miStatement.setDouble(4,articuloActualizado.getNexistencia());
+			
+			miStatement.setDouble(5,articuloActualizado.getNprecio());
+			miStatement.setInt(6,articuloActualizado.getNid());
+			
+			
+			//ejecutar la instruccion     sql
+			miStatement.execute();
+			
+			
+			
+				
+		
+		
+		
 	}
 
 }

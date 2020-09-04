@@ -88,6 +88,17 @@ public void init() throws ServletException {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			
+		case "actualizarBBDD":
+			try {
+				actualizaArticulos(request,response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			break ;
 		default:
 			obtenerArticulos(request,response);
 			
@@ -96,6 +107,40 @@ public void init() throws ServletException {
 		
 		
 		
+		
+	}
+
+
+	private void actualizaArticulos(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		// TODO Auto-generated method stub
+		
+		
+		//leer los datos que le viene del formulario de actualizar 
+
+		String Codcodigo=request.getParameter("codigo");
+		String Codnombre=request.getParameter("nombre");
+		int Codid= Integer.parseInt( request.getParameter("id"));
+		
+		
+		
+		String Coddescripcion=request.getParameter("descripcion");
+		Double Codexistencia=Double.parseDouble(request.getParameter("existencia"));
+		Double Codprecio=Double.parseDouble( request.getParameter("precio"));
+		
+//		crear un objteo de tipo producto con lainfo de lformulario
+		Articulos articuloActualizado=new Articulos( Codid, Codnombre, Coddescripcion, Codcodigo, Codexistencia,Codprecio);
+
+		
+		
+		
+		
+//		actualizar la base de datos con la info del objeto producto
+		
+		modeloarticulo.ActualizarProducto(articuloActualizado); 
+
+		
+		//volver al listado con la info actualizada
+		obtenerArticulos(request,response);
 		
 	}
 
