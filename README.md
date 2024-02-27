@@ -78,7 +78,7 @@
 ## Sobre este Proyecto
 
 
-![Descripción de la imagen Markdown](/images/Captura desde 2024-02-26 21-05-39.png)
+![Descripción de la imagen Markdown](/images/Cap.png)
 
 
 
@@ -170,7 +170,7 @@ Después de la instalación, se importa al proyecto :
 
 - [ ] Add Changelog
 - [x] Add back to top links
-- [] Add Additional Templates w/ Examples
+- [ ] Add Additional Templates w/ Examples
 - [ ] Add "components" document to easily copy & paste sections of the readme
 - [ ] Multi-language Support
     - [ ] Chinese
